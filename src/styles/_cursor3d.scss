@@ -1,0 +1,349 @@
+// USER VARIABLES SECTION
+$accent: #b01ddc; // Accent Color
+$fontsize: 18px; // Body Font Size
+$textcolor: #fff; // Text Color
+$lineheight: 1.65; // Document Line Height
+$userfont: Ubuntu, sans-serif; // User Font Family
+$systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Font Family
+
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 20px;
+$gutter: $grid-gutter-width;
+
+// IMPORT SECTION
+
+@import "../../node_modules/bootstrap/scss/bootstrap-reboot.scss"; // Bootstrap Reboot collection
+@import "../../node_modules/bootstrap/scss/mixins/_breakpoints.scss"; // Bootstrap Breakpoints mixin
+@import "../../node_modules/bootstrap/scss/bootstrap-grid.scss"; // Optional Bootstrap Grid
+// @import 'node_modules/bootstrap/scss/utilities/_sizing.scss' // Optional Bootstrap Utilites
+
+// FONTS LOAD SECTION
+
+@mixin font($fname, $fstyle, $fweight, $furl) {
+  @font-face {
+    font-family: $fname;
+    font-style: $fstyle;
+    font-weight: $fweight;
+    src: local($fname), url($furl) format("woff2");
+    // font-display: swap // Uncomment to initially display system fonts
+  }
+}
+@include font("Ubuntu", normal, 400, "../fonts/ubuntu-regular-webfont.woff2");
+@include font("Ubuntu", normal, 300, "../fonts/ubuntu-light-webfont.woff2");
+@include font("Ubuntu", normal, 700, "../fonts/ubuntu-bold-webfont.woff2");
+
+@include font("Raleway", normal, 400, "../fonts/raleway-regular-webfont.woff2");
+@include font("Raleway", normal, 700, "../fonts/raleway-bold-webfont.woff2");
+
+// GENERAL DOCUMENT STYLES
+
+::placeholder {
+  color: #666;
+}
+
+::selection {
+  background-color: $accent;
+  color: #fff;
+}
+
+input,
+textarea {
+  outline: none;
+  &:focus:required:invalid {
+    border-color: red;
+  }
+  &:required:valid {
+    border-color: green;
+  }
+}
+
+body {
+  font-family: $userfont;
+  font-size: $fontsize;
+  line-height: $lineheight;
+  color: $textcolor;
+  min-width: 320px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+// CURSOR
+
+* {
+    cursor: none !important;
+}
+
+#cursor,
+#aura {
+  position: absolute;
+  border-radius: 100%;
+  transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform, 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+#cursor {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(#fff, 0.5);
+  transform: scale(1);
+  &.active {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+#aura {
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(#fff, 0.2);
+  background-color: rgba(#fff, 0.027);
+  transform: translate(5px, 5px);
+  &.active {
+    border: 1.2px solid rgba(#fff, 0.33);
+    transform: scale(1.3);
+  }
+}
+
+#aura.hidden,
+#cursor.hidden {
+  transform: scale(0.001);
+}
+
+// CUSTOM USER STYLES & IMPORTS
+
+body {
+  background-color: #1c1c1c;
+  font-weight: 300;
+  perspective: 1000px;
+}
+
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+.top-line {
+  position: absolute;
+  width: 100%;
+  padding: 60px 0;
+  z-index: 100;
+  .container-fluid {
+    max-width: 1680px;
+  }
+}
+.logo {
+  font-size: 26px;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px;
+  white-space: nowrap;
+  span {
+    font-weight: 300;
+    transition: color 1s ease;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: #ffffff;
+    span {
+      color: $accent;
+    }
+  }
+}
+.button {
+  background-color: $accent;
+  color: #ffffff;
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 10em;
+  font-size: 16px;
+  font-weight: 400;
+  transition: background-color 0.25s ease;
+  &:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: darken($accent, 10);
+  }
+}
+
+.card-header {
+  height: 100vh;
+  min-height: 700px;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.02;
+    transform: scale(1.3);
+    @media (max-width: 1366px) {
+      transform: scale(1);
+    }
+  }
+}
+.content {
+  height: 100%;
+  padding: 160px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+
+  h1 {
+    font-size: 31px;
+    line-height: 43px;
+    margin-bottom: 38px;
+    strong {
+      color: $accent;
+      white-space: nowrap;
+      span {
+        font-weight: 300;
+        color: #ffffff;
+      }
+    }
+  }
+  h1,
+  p,
+  a {
+    padding-left: 20px;
+  }
+}
+
+.trylink {
+  color: $accent;
+  font-weight: bold;
+  margin-top: 20px;
+  display: inline-block;
+  font-size: 16px;
+
+  i {
+    display: inline-block;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    color: #ffffff;
+    width: 36px;
+    height: 36px;
+    background-color: $accent;
+    text-align: center;
+    border-radius: 100%;
+    line-height: 32px;
+    margin-right: 10px;
+  }
+  &:hover {
+    color: $accent;
+  }
+}
+.card {
+  position: relative;
+  width: 458px;
+  height: 288px;
+  display: inline-block;
+  zoom: 0.9;
+  > img {
+    position: absolute;
+    opacity: 0;
+    transition: all 1s ease;
+  }
+
+  &-logo_w {
+    z-index: 12;
+    top: 45px;
+    right: 45px;
+    width: 120px;
+  }
+
+  &-chip {
+    z-index: 12;
+    left: 45px;
+    top: 80px;
+  }
+
+  &-number-holder {
+    z-index: 12;
+    left: 45px;
+    top: 158px;
+    zoom: 3.5;
+  }
+
+  &-valid {
+    z-index: 12;
+    top: 194px;
+    right: 211px;
+    zoom: 3;
+  }
+
+  &-russia {
+    z-index: 11;
+    top: 20px;
+    left: 22px;
+    width: 420px;
+  }
+}
+.l_main {
+  left: 0;
+  z-index: 10;
+}
+
+.l2_main {
+  left: 0;
+  z-index: 8;
+  left: -50px;
+  top: 30px;
+}
+
+.l3_main {
+  left: 0;
+  z-index: 6;
+  left: -100px;
+  top: 60px;
+}
+
+.bottom-line {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 14px;
+  width: 100%;
+  font-family: Raleway;
+  opacity: 0.15;
+
+  strong {
+    font-weight: bold;
+  }
+  a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+}
+
+.level--2 {
+  transform: translateZ(-70px);
+}
+
+.level--1 {
+  transform: translateZ(-35px);
+}
+
+.level-1 {
+  transform: translateZ(20px);
+}
+
+.level-2 {
+  transform: translateZ(40px);
+}

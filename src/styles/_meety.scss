@@ -1,0 +1,207 @@
+$back-color: #520da6;
+$pink-color: #ec008c;
+$green-color: #dcff00;
+
+
+#meetyStuffBody {
+  background-color: $back-color;
+  height: auto;
+  padding: 0 0.5rem;
+}
+  #plunger {
+    display: flex;
+    .split-item {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .btn {
+      border: 1px solid;
+      font-family: AnoBold Regular, Helvetica Neue, helvetica, sans-serif;
+      font-size: 1.125rem;
+      padding: 1.5rem 4rem;
+      text-align: center;
+      color: $green-color;
+      text-transform: uppercase;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      background-color: transparent;
+      box-shadow: none;
+      transform: none;
+    }
+    a {
+      cursor: url(https://meetyourstaff.co/Staff-cursor-link.svg) 1 1, auto;
+    }
+    .btn:hover:after {
+      -webkit-clip-path: circle(75%);
+      clip-path: circle(75%);
+    }
+    .btn:after {
+      background-color: $green-color;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      -webkit-clip-path: circle(0);
+      clip-path: circle(0);
+      transition: all 0.4s cubic-bezier(0.85, 0, 0.15, 1);
+      mix-blend-mode: exclusion;
+      content: "";
+    }
+    .btn:hover {
+      box-shadow: 0 0.25em 1em rgba(220, 255, 0, 0.75);
+      transform: translateY(-5px);
+    }
+    h2 {
+      font-family: AnoBold Regular, Helvetica Neue, helvetica, sans-serif;
+      font-weight: 400;
+      font-size: 2.25rem;
+      line-height: 1.25;
+      margin: 0 0 0.5rem;
+      color: $green-color;
+    }
+    h4 {
+      font-family: AnoBold Regular, Helvetica Neue, helvetica, sans-serif;
+      font-size: 1.125rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      color: $pink-color;
+    }
+    p {
+      color: $pink-color;
+      line-height: 1.4rem;
+      font-size: 1rem;
+    }
+    #right {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    #left,
+    #right {
+      flex: 1;
+    }
+    picture {
+      order: 2;
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+/////////////////
+@import url("https://fonts.googleapis.com/css?family=Arapey");
+
+body {
+  margin: 0;
+  font-family: "Arapey";
+
+  h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 30%;
+  }
+}
+
+section {
+  padding: 3em;
+  height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+
+  blockquote {
+    font-size: 2.3em;
+    width: 30%;
+    margin-top: 17%;
+    position: absolute;
+
+    span {
+      width: 100%;
+      background: red;
+      display: block;
+      height: 5px;
+      margin-top: 20px;
+    }
+  }
+
+  img {
+    position: absolute;
+  }
+
+  img:nth-of-type(1) {
+    width: 40%;
+    right: 0;
+    top: 20%;
+  }
+  img:nth-of-type(2) {
+    width: 25%;
+    right: 40%;
+    top: 29%;
+    margin-top: 15%;
+  }
+}
+section:nth-child(odd) {
+  background: #f1f1f1;
+}
+.sticky {
+  background: white !important;
+}
+
+.percentage {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#box {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border: 5px solid lightgray;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+//////////
+@mixin random-bgr() {
+  fill: rgb(random(255), random(255), random(255));
+}
+
+#bubblesContainer {
+  grid-template-columns: repeat(20, minmax(0, 1fr));
+  display: grid;
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+  #oneCircle {
+    transition-delay: 0s;
+
+    &:not(:hover) {
+      transition-delay: 1s;
+      fill: transparent;
+    }
+  }
+}
+html {
+  // font-size: 62.5%;
+}
+body,
+html,
+ul,
+li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
